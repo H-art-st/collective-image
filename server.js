@@ -8,7 +8,7 @@ const fs = require('fs');
 const maxSize = 4 * 1024 * 1024; // for 4MB
 
 const dir = './uploads';
-mongoose.connect('mongodb://localhost/uploadFiles');
+mongoose.connect('mongodb+srv://harsh:harsh@cluster0.ssoip.mongodb.net/uploadFiles');
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -90,5 +90,5 @@ app.post('/delete', (req, res) => {
   res.redirect('/');
 });
 
-const port = 3000;
+const port = process.env.PORT || 3000
 app.listen(port, () => { console.log('listening on port ' + port); });
